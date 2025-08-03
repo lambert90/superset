@@ -741,7 +741,7 @@ export const ControlPanelsContainer = (props: ControlPanelsContainerProps) => {
 
   // Create Matrixify tab label with Beta tag
   const matrixifyTabLabel = (
-    <span>
+    <>
       {t('Matrixify')}{' '}
       <Tooltip
         title={t(
@@ -759,7 +759,7 @@ export const ControlPanelsContainer = (props: ControlPanelsContainerProps) => {
           {t('beta')}
         </Label>
       </Tooltip>
-    </span>
+    </>
   );
 
   return (
