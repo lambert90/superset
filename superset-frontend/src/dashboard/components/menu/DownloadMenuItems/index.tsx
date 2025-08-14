@@ -21,10 +21,12 @@ import DownloadScreenshot from './DownloadScreenshot';
 import { DownloadScreenshotFormat } from './types';
 import DownloadAsPdf from './DownloadAsPdf';
 import DownloadAsImage from './DownloadAsImage';
+import DownloadAsExcel from './DownloadAsExcel';
 
 export interface DownloadMenuItemProps {
   pdfMenuItemTitle: string;
   imageMenuItemTitle: string;
+  chartMenuItemTitle: string;
   dashboardTitle: string;
   logEvent?: Function;
   dashboardId: number;
@@ -34,6 +36,7 @@ const DownloadMenuItems = (props: DownloadMenuItemProps) => {
   const {
     pdfMenuItemTitle,
     imageMenuItemTitle,
+    chartMenuItemTitle,
     logEvent,
     dashboardId,
     dashboardTitle,
@@ -59,6 +62,13 @@ const DownloadMenuItems = (props: DownloadMenuItemProps) => {
         format={DownloadScreenshotFormat.PNG}
         {...rest}
       />
+      <DownloadAsExcel
+          text="Download Dashboard To Excel Template"
+          dashboardTitle={dashboardTitle}
+          logEvent={logEvent}
+          useTemplate={false}
+          {...rest}
+        />
     </>
   ) : (
     <>
@@ -74,6 +84,13 @@ const DownloadMenuItems = (props: DownloadMenuItemProps) => {
         logEvent={logEvent}
         {...rest}
       />
+      <DownloadAsExcel
+          text="Download Dashboard To Excel Template"
+          dashboardTitle={dashboardTitle}
+          logEvent={logEvent}
+          useTemplate={false}
+          {...rest}
+        />
     </>
   );
 };
