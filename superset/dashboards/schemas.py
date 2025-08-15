@@ -70,8 +70,7 @@ json_metadata_description = (
     " specific parameters."
 )
 published_description = (
-    "Determines whether or not this dashboard is visible in "
-    "the list of all dashboards."
+    "Determines whether or not this dashboard is visible in the list of all dashboards."
 )
 charts_description = (
     "The names of the dashboard's charts. Names are used for legacy reasons."
@@ -260,7 +259,6 @@ class DashboardDatasetSchema(Schema):
     id = fields.Int()
     uid = fields.Str()
     column_formats = fields.Dict()
-    currency_formats = fields.Dict()
     database = fields.Nested(DatabaseSchema)
     default_endpoint = fields.String()
     filter_select = fields.Bool()
@@ -485,6 +483,7 @@ class ImportV1DashboardSchema(Schema):
     certified_by = fields.String(allow_none=True)
     certification_details = fields.String(allow_none=True)
     published = fields.Boolean(allow_none=True)
+    tags = fields.List(fields.String(), allow_none=True)
 
 
 class EmbeddedDashboardConfigSchema(Schema):
@@ -522,3 +521,4 @@ class CacheScreenshotSchema(Schema):
     urlParams = fields.List(  # noqa: N815
         fields.List(fields.Str(), validate=lambda x: len(x) == 2), required=False
     )
+    permalinkKey = fields.Str(required=False)  # noqa: N815
